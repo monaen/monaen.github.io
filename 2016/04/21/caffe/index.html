@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Caffe Training Note | FreeWind</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ImageNetThis part is a simplified instruction of training own data using Caffe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Caffe Training Note">
+<meta property="og:url" content="http://naenmong.com/2016/04/21/caffe/index.html">
+<meta property="og:site_name" content="FreeWind">
+<meta property="og:description" content="ImageNetThis part is a simplified instruction of training own data using Caffe">
+<meta property="og:updated_time" content="2016-04-21T03:21:53.833Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Caffe Training Note">
+<meta name="twitter:description" content="ImageNetThis part is a simplified instruction of training own data using Caffe">
+  
+    <link rel="alternative" href="/atom.xml" title="FreeWind" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/favicon.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Nan Meng</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+							<li><a href="/categories/note">Notes</a></li>
+				        
+							<li><a href="/about">about</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/monaen" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:nanmeng.uestc@hotmail.com" title="mail">mail</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/u/0/105343020684770260062/posts" title="google">google</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/profile/preview?locale=zh_CN&trk=prof-0-sb-preview-primary-button" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Note-DeepLearning/" style="font-size: 10px;">Note DeepLearning</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/configuration/" style="font-size: 10px;">configuration</a> <a href="/tags/deep-learning/" style="font-size: 20px;">deep learning</a> <a href="/tags/note/" style="font-size: 20px;">note</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://richardkwo.net/">RichardGuo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.songqiuestc.com/">SongQi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.eee.hku.hk/~sunxing/">XingSun</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I am free wind. I am an artist in computer vision......</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Nan Meng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/favicon.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Nan Meng</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+					<li><a href="/categories/note">Notes</a></li>
+		        
+					<li><a href="/about">about</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/monaen" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:nanmeng.uestc@hotmail.com" title="mail">mail</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/u/0/105343020684770260062/posts" title="google">google</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/profile/preview?locale=zh_CN&trk=prof-0-sb-preview-primary-button" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-caffe" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/21/caffe/" class="article-date">
+  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">2016-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Caffe Training Note
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/caffe/">caffe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/">deep learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/note/">note</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      	
+	  <div id="toc" class="toc-article">
+	    <strong class="toc-title">Content</strong>
+	    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ImageNet"><span class="toc-number">1.</span> <span class="toc-text">ImageNet</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Preparing-the-dataset"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. Preparing the dataset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ERROR-amp-REASION"><span class="toc-number">1.1.</span> <span class="toc-text">ERROR & REASION</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Error-1-Out-of-memory"><span class="toc-number">1.1.1.</span> <span class="toc-text">Error 1: Out of memory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reason"><span class="toc-number">1.1.2.</span> <span class="toc-text">- Reason</span></a></li></ol></li></ol></li></ol>
+	  </div>
+        
+        <h2 id="ImageNet"><a href="#ImageNet" class="headerlink" title="ImageNet"></a>ImageNet</h2><p>This part is a simplified instruction of training own data using <a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a><br><a id="more"></a></p>
+<h4 id="1-Preparing-the-dataset"><a href="#1-Preparing-the-dataset" class="headerlink" title="1. Preparing the dataset"></a><strong>1. Preparing the dataset</strong></h4><p>The final dataset should be like this:<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">data</span><br><span class="line">   -<span class="ruby">- train</span><br><span class="line"></span>      -<span class="ruby">- train1.jpg</span><br><span class="line"></span>	  -<span class="ruby">- train2.jpg</span><br><span class="line"></span>	  -<span class="ruby">- train3.jpg</span><br><span class="line"></span>	     ......</span><br><span class="line">   -<span class="ruby">- val</span><br><span class="line"></span>	  -<span class="ruby">- val1.jpg</span><br><span class="line"></span>	  -<span class="ruby">- val2.jpg</span><br><span class="line"></span>	  -<span class="ruby">- val3.jpg</span><br><span class="line"></span>	     ......</span><br><span class="line">   -<span class="ruby">- train.txt</span><br><span class="line"></span>   -<span class="ruby">- val.txt</span></span><br></pre></td></tr></table></figure></p>
+<p>and if the data is like this in python</p>
+<blockquote>
+<p>X_train.shape =  (5000, 1, 256, 256)<br>X_val.shape =  (2000, 1, 256, 256)<br>X_test.shape =  (500, 1, 256, 256)<br>y_train =  (5000,)<br>y_val =  (2000,)<br>y_test =  (500,)</p>
+</blockquote>
+<p>The following code can be used to generate the structure of dataset<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> not os.path.exists(<span class="string">'data'</span>):</span><br><span class="line">    os.makedirs(<span class="string">'data'</span>)</span><br><span class="line"></span><br><span class="line">os.chdir(<span class="string">'data'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">## save image</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> not os.path.exists(<span class="string">'train'</span>):</span><br><span class="line">    os.makedirs(<span class="string">'train'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(Numtrain):</span><br><span class="line">    name = <span class="string">'train'</span> + str(i) + <span class="string">'.jpg'</span></span><br><span class="line">    xx = X_train[i,]</span><br><span class="line">    xx =  xx.transpose(1,2,0)</span><br><span class="line">    xx = (xx - np.min(xx)) / (np.max(xx)-np.min(xx))*255.0</span><br><span class="line">    img = Image.fromarray(xx.astype(np.uint8), <span class="string">'RGB'</span>) <span class="comment">## Notice that the function Image.fromarray() can only save image</span></span><br><span class="line">                                                  <span class="comment">## of the form 'uint8' type !!!</span></span><br><span class="line">    img.save(<span class="string">'train/'</span> + name)</span><br><span class="line"></span><br><span class="line">............</span><br></pre></td></tr></table></figure></p>
+<p><strong>Create a new file named “cell” under the “examples/imagenet” path and put the data folder into it</strong><br><strong>copy the file “examples/iamgenet/creat_imagenet.sh into newly created folder “cell” and change it as follows</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">EXAMPLE</span>=examples/imagenet/cell</span><br><span class="line"><span class="attr">DATA</span>=examples/imagenet/cell</span><br><span class="line"><span class="attr">TOOLS</span>=build/tools</span><br><span class="line"></span><br><span class="line"><span class="attr">TRAIN_DATA_ROOT</span>=examples/imagenet/cell/data/train</span><br><span class="line"><span class="attr">VAL_DATA_ROOT</span>=examples/imagenet/cell/data/val</span><br><span class="line"></span><br><span class="line"><span class="attr">RESIZE</span>=<span class="literal">true</span> # if the images do not need resize, set it to <span class="string">"false"</span></span><br></pre></td></tr></table></figure></p>
+<p>run command: <code>./examples/imagenet/myself/create_imagenet.sh</code><br>then lmdb file will be generated under cell folder.</p>
+<h4 id="2"><a href="#2" class="headerlink" title="2. "></a><strong>2. </strong></h4><h3 id="ERROR-amp-REASION"><a href="#ERROR-amp-REASION" class="headerlink" title="ERROR &amp; REASION"></a>ERROR &amp; REASION</h3><h4 id="Error-1-Out-of-memory"><a href="#Error-1-Out-of-memory" class="headerlink" title="Error 1: Out of memory"></a>Error 1: Out of memory</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">F042<span class="number">0</span> <span class="number">13</span><span class="symbol">:</span><span class="number">29</span><span class="symbol">:</span><span class="number">52.527748</span> <span class="number">10836</span> syncedmem.<span class="symbol">cpp:</span><span class="number">56</span>] Check <span class="symbol">failed:</span> error == cudaSuccess (<span class="number">2</span> vs. <span class="number">0</span>)  out of memory</span><br><span class="line">*** Check failure stack <span class="symbol">trace:</span> ***</span><br><span class="line">    @     <span class="number">0x7f6cb7656dbd</span>  <span class="symbol">google:</span><span class="symbol">:LogMessage</span><span class="symbol">:</span><span class="symbol">:Fail</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7658cf8</span>  <span class="symbol">google:</span><span class="symbol">:LogMessage</span><span class="symbol">:</span><span class="symbol">:SendToLog</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7656953</span>  <span class="symbol">google:</span><span class="symbol">:LogMessage</span><span class="symbol">:</span><span class="symbol">:Flush</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb765962e</span>  <span class="symbol">google:</span><span class="symbol">:LogMessageFatal</span><span class="symbol">:</span><span class="symbol">:~LogMessageFatal</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d5b021</span>  <span class="symbol">caffe:</span><span class="symbol">:SyncedMemory</span><span class="symbol">:</span><span class="symbol">:to_gpu</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d5a389</span>  <span class="symbol">caffe:</span><span class="symbol">:SyncedMemory</span><span class="symbol">:</span><span class="symbol">:mutable_gpu_data</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d3fdf2</span>  <span class="symbol">caffe:</span><span class="symbol">:Blob&lt;&gt;</span><span class="symbol">:</span><span class="symbol">:mutable_gpu_data</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7dca57f</span>  <span class="symbol">caffe:</span><span class="symbol">:CuDNNConvolutionLayer&lt;&gt;</span><span class="symbol">:</span><span class="symbol">:Forward_gpu</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d71ec5</span>  <span class="symbol">caffe:</span><span class="symbol">:Net&lt;&gt;</span><span class="symbol">:</span><span class="symbol">:ForwardFromTo</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d72237</span>  <span class="symbol">caffe:</span><span class="symbol">:Net&lt;&gt;</span><span class="symbol">:</span><span class="symbol">:Forward</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d552c7</span>  <span class="symbol">caffe:</span><span class="symbol">:Solver&lt;&gt;</span><span class="symbol">:</span><span class="symbol">:Step</span>()</span><br><span class="line">    @     <span class="number">0x7f6cb7d55b89</span>  <span class="symbol">caffe:</span><span class="symbol">:Solver&lt;&gt;</span><span class="symbol">:</span><span class="symbol">:Solve</span>()</span><br><span class="line">    @           <span class="number">0x40806e</span>  train()</span><br><span class="line">    @           <span class="number">0x40594c</span>  main</span><br><span class="line">    @     <span class="number">0x7f6cb6969ec5</span>  __libc_start_main</span><br><span class="line">    @           <span class="number">0x406081</span>  (unknown)</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
+<h4 id="Reason"><a href="#Reason" class="headerlink" title="- Reason"></a>- Reason</h4><p>ERROR reasion: batch_size is too large!!! you should change the batch_size in train_val.prototxt file</p>
+<p>Notice: When you set the configuration of caffe model, something you should notice<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">"batch_size": should not be larger than 100 if you <span class="keyword">use</span> a single GPU <span class="keyword">to</span> train the network.</span><br><span class="line"></span><br><span class="line"><span class="string">"stepsize"</span>: should smaller <span class="keyword">than</span> <span class="string">"max_iter"</span> <span class="keyword">and</span> also should be the divisor <span class="keyword">of</span> <span class="string">"max_iter"</span>.</span><br><span class="line"></span><br><span class="line"><span class="string">"test_iter"</span>: should be the multiple <span class="keyword">of</span> (val_size / batch_size) [val_size <span class="keyword">is</span> the <span class="keyword">size</span> <span class="keyword">of</span> val <span class="keyword">data</span>, <span class="keyword">and</span> the batch_size <span class="keyword">describe</span> the batch <span class="keyword">size</span> <span class="keyword">of</span> val <span class="keyword">data</span>].</span><br><span class="line"></span><br><span class="line"><span class="string">"test_interval"</span> should better be the multiple <span class="keyword">of</span> (train_size / batch_size) [train_size <span class="keyword">is</span> the <span class="keyword">size</span> <span class="keyword">of</span> your train <span class="keyword">data</span>, <span class="keyword">and</span> the batch_size <span class="keyword">describe</span> the batch <span class="keyword">size</span> <span class="keyword">of</span> train <span class="keyword">data</span>].</span><br><span class="line"></span><br><span class="line">Since the <span class="keyword">result</span> <span class="keyword">is</span> better <span class="keyword">when</span> you train <span class="keyword">on</span> your whole train dataset. <span class="keyword">and</span> this <span class="keyword">variable</span> determine the <span class="keyword">model</span> should be <span class="keyword">test</span> <span class="keyword">after</span> every how many iterations.</span><br><span class="line"></span><br><span class="line"><span class="string">"stepsize"</span>: determine the <span class="string">"base_lr"</span> should be <span class="keyword">reduced</span> <span class="keyword">by</span> <span class="string">"weight_decay"</span> <span class="keyword">value</span> <span class="keyword">after</span> how many times iterations.</span><br><span class="line"></span><br><span class="line"><span class="string">"snapshot"</span>: determine the intermidiate results should be <span class="keyword">stored</span> every how many times <span class="keyword">of</span> iterations.</span><br><span class="line"></span><br><span class="line"><span class="string">"snapshot_prefix"</span>: determine the <span class="keyword">directory</span> <span class="keyword">of</span> storing the <span class="keyword">snapshot</span> results</span><br></pre></td></tr></table></figure></p>
+<p>One example of prototxt configuration:<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#####################</span></span><br><span class="line"><span class="meta">## solver.prototxt ##</span></span><br><span class="line"><span class="meta">#####################</span></span><br><span class="line"><span class="symbol"></span><br><span class="line">net:</span> <span class="string">"examples/imagenet/cell/train_val.prototxt"</span></span><br><span class="line"><span class="symbol">test_iter:</span> <span class="number">40</span></span><br><span class="line"><span class="symbol">test_interval:</span> <span class="number">40</span></span><br><span class="line"><span class="symbol">base_lr:</span> <span class="number">0.01</span></span><br><span class="line"><span class="symbol">lr_policy:</span> <span class="string">"step"</span></span><br><span class="line"><span class="symbol">gamma:</span> <span class="number">0.1</span></span><br><span class="line"><span class="symbol">stepsize:</span> <span class="number">100000</span></span><br><span class="line"><span class="symbol">display:</span> <span class="number">20</span></span><br><span class="line"><span class="symbol">max_iter:</span> <span class="number">10000</span></span><br><span class="line"><span class="symbol">momentum:</span> <span class="number">0.9</span></span><br><span class="line"><span class="symbol">weight_decay:</span> <span class="number">0.0005</span></span><br><span class="line"><span class="symbol">snapshot:</span> <span class="number">1000</span></span><br><span class="line"><span class="symbol">snapshot_prefix:</span> <span class="string">"examples/imagenet/cell/model/caffenet_train"</span></span><br><span class="line"><span class="symbol">solver_mode:</span> GPU</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">########################</span></span><br><span class="line"><span class="meta">## train_val.prototxt ##</span></span><br><span class="line"><span class="meta">########################</span></span><br><span class="line"><span class="symbol"></span><br><span class="line">name:</span> <span class="string">"CaffeNet"</span></span><br><span class="line"><span class="class">layer </span>&#123;</span><br><span class="line"><span class="symbol">  name:</span> <span class="string">"data"</span></span><br><span class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></span><br><span class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></span><br><span class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></span><br><span class="line">  <span class="class">include </span>&#123;</span><br><span class="line"><span class="symbol">    phase:</span> TRAIN</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="class">transform_param </span>&#123;</span><br><span class="line"><span class="symbol">    mirror:</span> true</span><br><span class="line"><span class="symbol">    crop_size:</span> <span class="number">227</span></span><br><span class="line"><span class="symbol">    mean_file:</span> <span class="string">"examples/imagenet/cell/imagenet_mean.binaryproto"</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta"># mean pixel / channel-wise mean instead of mean image</span></span><br><span class="line"><span class="meta">#  transform_param &#123;</span></span><br><span class="line"><span class="meta">#    crop_size: 227</span></span><br><span class="line"><span class="meta">#    mean_value: 104</span></span><br><span class="line"><span class="meta">#    mean_value: 117</span></span><br><span class="line"><span class="meta">#    mean_value: 123</span></span><br><span class="line"><span class="meta">#    mirror: true</span></span><br><span class="line"><span class="meta">#  &#125;</span></span><br><span class="line">  <span class="class">data_param </span>&#123;</span><br><span class="line"><span class="symbol">    source:</span> <span class="string">"examples/imagenet/cell/train_lmdb"</span></span><br><span class="line"><span class="symbol">    batch_size:</span> <span class="number">250</span></span><br><span class="line"><span class="symbol">    backend:</span> LMDB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class">layer </span>&#123;</span><br><span class="line"><span class="symbol">  name:</span> <span class="string">"data"</span></span><br><span class="line"><span class="symbol">  type:</span> <span class="string">"Data"</span></span><br><span class="line"><span class="symbol">  top:</span> <span class="string">"data"</span></span><br><span class="line"><span class="symbol">  top:</span> <span class="string">"label"</span></span><br><span class="line">  <span class="class">include </span>&#123;</span><br><span class="line"><span class="symbol">    phase:</span> TEST</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="class">transform_param </span>&#123;</span><br><span class="line"><span class="symbol">    mirror:</span> false</span><br><span class="line"><span class="symbol">    crop_size:</span> <span class="number">227</span></span><br><span class="line"><span class="symbol">    mean_file:</span> <span class="string">"examples/imagenet/cell/imagenet_mean.binaryproto"</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta"># mean pixel / channel-wise mean instead of mean image</span></span><br><span class="line"><span class="meta">#  transform_param &#123;</span></span><br><span class="line"><span class="meta">#    crop_size: 227</span></span><br><span class="line"><span class="meta">#    mean_value: 104</span></span><br><span class="line"><span class="meta">#    mean_value: 117</span></span><br><span class="line"><span class="meta">#    mean_value: 123</span></span><br><span class="line"><span class="meta">#    mirror: false</span></span><br><span class="line"><span class="meta">#  &#125;</span></span><br><span class="line">  <span class="class">data_param </span>&#123;</span><br><span class="line"><span class="symbol">    source:</span> <span class="string">"examples/imagenet/cell/val_lmdb"</span></span><br><span class="line"><span class="symbol">    batch_size:</span> <span class="number">50</span></span><br><span class="line"><span class="symbol">    backend:</span> LMDB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/21/Caffe-Training-Experiment/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Caffe Training Experiments
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/21/cs231n-note/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CS231n</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Nan Meng
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

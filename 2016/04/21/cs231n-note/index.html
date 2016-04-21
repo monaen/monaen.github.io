@@ -4,17 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/4 | FreeWind</title>
+  <title>CS231n | FreeWind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog for work">
-<meta property="og:type" content="website">
-<meta property="og:title" content="FreeWind">
-<meta property="og:url" content="http://naenmong.com/archives/2016/04/index.html">
+  <meta name="description" content="Note for CS231n
+
+Data preprocessing: Normalize the features in your data to have zero mean and unit variance before feed into the deep model.
+Split data tricks: This setting depends on how many hyperp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS231n">
+<meta property="og:url" content="http://naenmong.com/2016/04/21/cs231n-note/index.html">
 <meta property="og:site_name" content="FreeWind">
-<meta property="og:description" content="Blog for work">
+<meta property="og:description" content="Note for CS231n
+
+Data preprocessing: Normalize the features in your data to have zero mean and unit variance before feed into the deep model.
+Split data tricks: This setting depends on how many hyperp">
+<meta property="og:updated_time" content="2016-04-21T03:12:52.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FreeWind">
-<meta name="twitter:description" content="Blog for work">
+<meta name="twitter:title" content="CS231n">
+<meta name="twitter:description" content="Note for CS231n
+
+Data preprocessing: Normalize the features in your data to have zero mean and unit variance before feed into the deep model.
+Split data tricks: This setting depends on how many hyperp">
   
     <link rel="alternative" href="/atom.xml" title="FreeWind" type="application/atom+xml">
   
@@ -198,197 +208,106 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-cs231n-note" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/21/mxnetnote/" class="archive-article-date">
-  	<time datetime="2016-04-20T16:48:21.694Z" itemprop="datePublished">Apr 21</time>
+    <div class="article-meta">
+      <a href="/2016/04/21/cs231n-note/" class="article-date">
+  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">2016-04-21</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/mxnetnote/">mxnet note</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CS231n
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note-DeepLearning/">Note DeepLearning</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/note/">note</a>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/21/Caffe-Training-Experiment/" class="archive-article-date">
-  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">Apr 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/Caffe-Training-Experiment/">Caffe Training Experiments</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/">deep learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/note/">note</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      	
+	  <div id="toc" class="toc-article">
+	    <strong class="toc-title">Content</strong>
+	    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">1.</span> <span class="toc-text">2</span></a></li></ol>
+	  </div>
+        
+        <p>Note for CS231n</p>
+<ol>
+<li>Data preprocessing: Normalize the features in your data to have zero mean and unit variance before feed into the deep model.</li>
+<li>Split data tricks: This setting depends on how many hyperparameters you have and how much of an influence you expect them to have.</li>
+</ol>
+<p>kNN defaults:</p>
+<ol>
+<li>remember all the data, i.e. store all the data into storage</li>
+<li>classify a single image cost much.(every classification need much computation)</li>
+</ol>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>Approach of neural network to do the classification task:</p>
+<ol>
+<li>score function: maps the raw data to class scores.</li>
+<li>loss function: quantify the agreement between the predicted scores.<br>cast as an optimization problem.</li>
+</ol>
+<p>single matrix multiplication WxiWxi is effectively evaluating 10 separate classifiers in parallel where each classifier is a row of <strong>W</strong>.</p>
+<p>classifying the test image involves a single matrix multiplication and addition, faster than comparing each test images to all training images which kNN use.<br>That’s also why we do like to use deep model although the training part is time-consuming, the test part is just a matrix multiplication and addition with complex O(n).</p>
+<p> Depending on precisely what values we set for these weights,function has the capacity to like or dislike (depending on the sign of each weight) certain colors at certain positions in the image. That is to say the color have influence on the accuracy of classification.</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/21/caffe/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Caffe Training Note
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/20/Blog-Build-Instruction/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Blog Configuration</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/21/caffe/" class="archive-article-date">
-  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">Apr 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/caffe/">Caffe Training Note</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/caffe/">caffe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/">deep learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/note/">note</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/21/cs231n-note/" class="archive-article-date">
-  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">Apr 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/cs231n-note/">CS231n</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/">deep learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/note/">note</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/20/Blog-Build-Instruction/" class="archive-article-date">
-  	<time datetime="2016-04-19T16:00:00.000Z" itemprop="datePublished">Apr 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/20/Blog-Build-Instruction/">Blog Configuration</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/configuration/">configuration</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/configuration/">configuration</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
 </div>
       <footer id="footer">
@@ -414,8 +333,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
