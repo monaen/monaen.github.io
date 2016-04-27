@@ -261,83 +261,6 @@
 
 
   
-    <article id="post-Caffe-Training-Experiment" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/21/Caffe-Training-Experiment/" class="article-date">
-  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">2016-04-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/21/Caffe-Training-Experiment/">Caffe Training Experiments</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      	
-	  <div id="toc" class="toc-article">
-	    <strong class="toc-title">Content</strong>
-	    
-	  </div>
-        
-        <p>Caffe is an open-source deep learning framework originally created by Yangqing Jia which allows you to leverage your GPU for training neural networks. As opposed to other deep learning frameworks like Theano or Torch you don’t have to program the algorithms yourself; instead you specify your network by means of configuration files. Obviously this approach is less time consuming than programming everything on your own, but it also forces you to stay within the boundaries of the framework, of course. Practically though this won’t matter most of the time as the framework Caffe provides is quite powerful and continuously advanced.</p>
-<p>Defining the Model and Meta-Parameters</p>
-<p>Training of a model and its application requires at least three configuration files. The format of those configuration files follows an interface description language called protocol buffers. It supeficially resembles JSON but is significantly different and actually supposed to replace it in use cases where the data document needs to be validateable (by means of a custom schema – like this one for Caffe) and serializable.</p>
-<p>For training you need one prototxt-file keeping the meta-parameters (config.prototxt) of the training and the model and another for defining the graph of the network (model_train_test.prototxt) – connecting the layers in an acyclical and directed fashion. Note that the data flows from bottom  to top  with regards to how the order of layers is specified. The example network here is composed of five layers:</p>
-<ol>
-<li>data layer (one for TRAINing and one for TESTing)</li>
-<li>inner product layer (the weights I)</li>
-<li>rectified linear units (the hidden layer)</li>
-<li>inner product layer (the weights II)</li>
-<li>output layer (Soft Max for classification)<br> A. soft max layer giving the loss<br> B. accuracy layer – so we can see how the network improves while training.</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/">deep learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/note/">note</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-caffe" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -452,6 +375,78 @@
 <p>single matrix multiplication WxiWxi is effectively evaluating 10 separate classifiers in parallel where each classifier is a row of <strong>W</strong>.</p>
 <p>classifying the test image involves a single matrix multiplication and addition, faster than comparing each test images to all training images which kNN use.<br>That’s also why we do like to use deep model although the training part is time-consuming, the test part is just a matrix multiplication and addition with complex O(n).</p>
 <p> Depending on precisely what values we set for these weights,function has the capacity to like or dislike (depending on the sign of each weight) certain colors at certain positions in the image. That is to say the color have influence on the accuracy of classification.</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep-learning/">deep learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/note/">note</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Caffe-Training-Experiment" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/21/Caffe-Training-Experiment/" class="article-date">
+  	<time datetime="2016-04-20T16:00:00.000Z" itemprop="datePublished">2016-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/21/Caffe-Training-Experiment/">Caffe Training Experiments</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      	
+        <p>Caffe is an open-source deep learning framework originally created by Yangqing Jia which allows you to leverage your GPU for training neural networks. As opposed to other deep learning frameworks like Theano or Torch you don’t have to program the algorithms yourself; instead you specify your network by means of configuration files. Obviously this approach is less time consuming than programming everything on your own, but it also forces you to stay within the boundaries of the framework, of course. Practically though this won’t matter most of the time as the framework Caffe provides is quite powerful and continuously advanced.</p>
+<p>Defining the Model and Meta-Parameters</p>
+<p>Training of a model and its application requires at least three configuration files. The format of those configuration files follows an interface description language called protocol buffers. It supeficially resembles JSON but is significantly different and actually supposed to replace it in use cases where the data document needs to be validateable (by means of a custom schema – like this one for Caffe) and serializable.</p>
+<p>For training you need one prototxt-file keeping the meta-parameters (config.prototxt) of the training and the model and another for defining the graph of the network (model_train_test.prototxt) – connecting the layers in an acyclical and directed fashion. Note that the data flows from bottom  to top  with regards to how the order of layers is specified. The example network here is composed of five layers:</p>
+<ol>
+<li>data layer (one for TRAINing and one for TESTing)</li>
+<li>inner product layer (the weights I)</li>
+<li>rectified linear units (the hidden layer)</li>
+<li>inner product layer (the weights II)</li>
+<li>output layer (Soft Max for classification)<br> A. soft max layer giving the loss<br> B. accuracy layer – so we can see how the network improves while training.</li>
+</ol>
 
       
     </div>

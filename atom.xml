@@ -36,41 +36,6 @@
   </entry>
   
   <entry>
-    <title>Caffe Training Experiments</title>
-    <link href="http://naenmong.com/2016/04/21/Caffe-Training-Experiment/"/>
-    <id>http://naenmong.com/2016/04/21/Caffe-Training-Experiment/</id>
-    <published>2016-04-20T16:00:00.000Z</published>
-    <updated>2016-04-21T03:01:22.737Z</updated>
-    
-    <content type="html">&lt;p&gt;Caffe is an open-source deep learning framework originally created by Yangqing Jia which allows you to leverage your GPU for training neural networks. As opposed to other deep learning frameworks like Theano or Torch you don’t have to program the algorithms yourself; instead you specify your network by means of configuration files. Obviously this approach is less time consuming than programming everything on your own, but it also forces you to stay within the boundaries of the framework, of course. Practically though this won’t matter most of the time as the framework Caffe provides is quite powerful and continuously advanced.&lt;/p&gt;
-&lt;p&gt;Defining the Model and Meta-Parameters&lt;/p&gt;
-&lt;p&gt;Training of a model and its application requires at least three configuration files. The format of those configuration files follows an interface description language called protocol buffers. It supeficially resembles JSON but is significantly different and actually supposed to replace it in use cases where the data document needs to be validateable (by means of a custom schema – like this one for Caffe) and serializable.&lt;/p&gt;
-&lt;p&gt;For training you need one prototxt-file keeping the meta-parameters (config.prototxt) of the training and the model and another for defining the graph of the network (model_train_test.prototxt) – connecting the layers in an acyclical and directed fashion. Note that the data flows from bottom  to top  with regards to how the order of layers is specified. The example network here is composed of five layers:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;data layer (one for TRAINing and one for TESTing)&lt;/li&gt;
-&lt;li&gt;inner product layer (the weights I)&lt;/li&gt;
-&lt;li&gt;rectified linear units (the hidden layer)&lt;/li&gt;
-&lt;li&gt;inner product layer (the weights II)&lt;/li&gt;
-&lt;li&gt;output layer (Soft Max for classification)&lt;br&gt; A. soft max layer giving the loss&lt;br&gt; B. accuracy layer – so we can see how the network improves while training.&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Caffe is an open-source deep learning framework originally created by Yangqing Jia which allows you to leverage your GPU for training neu
-    
-    </summary>
-    
-      <category term="note" scheme="http://naenmong.com/categories/note/"/>
-    
-    
-      <category term="note" scheme="http://naenmong.com/tags/note/"/>
-    
-      <category term="deep learning" scheme="http://naenmong.com/tags/deep-learning/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Caffe Training Note</title>
     <link href="http://naenmong.com/2016/04/21/caffe/"/>
     <id>http://naenmong.com/2016/04/21/caffe/</id>
@@ -114,7 +79,7 @@
     <link href="http://naenmong.com/2016/04/21/cs231n-note/"/>
     <id>http://naenmong.com/2016/04/21/cs231n-note/</id>
     <published>2016-04-20T16:00:00.000Z</published>
-    <updated>2016-04-21T03:12:52.689Z</updated>
+    <updated>2016-04-21T18:16:17.000Z</updated>
     
     <content type="html">&lt;p&gt;Note for CS231n&lt;/p&gt;
 &lt;ol&gt;
@@ -141,6 +106,41 @@
       &lt;p&gt;Note for CS231n&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Data preprocessing: Normalize the features in your data to have zero mean and unit variance before feed into
+    
+    </summary>
+    
+      <category term="note" scheme="http://naenmong.com/categories/note/"/>
+    
+    
+      <category term="note" scheme="http://naenmong.com/tags/note/"/>
+    
+      <category term="deep learning" scheme="http://naenmong.com/tags/deep-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Caffe Training Experiments</title>
+    <link href="http://naenmong.com/2016/04/21/Caffe-Training-Experiment/"/>
+    <id>http://naenmong.com/2016/04/21/Caffe-Training-Experiment/</id>
+    <published>2016-04-20T16:00:00.000Z</published>
+    <updated>2016-04-23T17:21:25.272Z</updated>
+    
+    <content type="html">&lt;p&gt;Caffe is an open-source deep learning framework originally created by Yangqing Jia which allows you to leverage your GPU for training neural networks. As opposed to other deep learning frameworks like Theano or Torch you don’t have to program the algorithms yourself; instead you specify your network by means of configuration files. Obviously this approach is less time consuming than programming everything on your own, but it also forces you to stay within the boundaries of the framework, of course. Practically though this won’t matter most of the time as the framework Caffe provides is quite powerful and continuously advanced.&lt;/p&gt;
+&lt;p&gt;Defining the Model and Meta-Parameters&lt;/p&gt;
+&lt;p&gt;Training of a model and its application requires at least three configuration files. The format of those configuration files follows an interface description language called protocol buffers. It supeficially resembles JSON but is significantly different and actually supposed to replace it in use cases where the data document needs to be validateable (by means of a custom schema – like this one for Caffe) and serializable.&lt;/p&gt;
+&lt;p&gt;For training you need one prototxt-file keeping the meta-parameters (config.prototxt) of the training and the model and another for defining the graph of the network (model_train_test.prototxt) – connecting the layers in an acyclical and directed fashion. Note that the data flows from bottom  to top  with regards to how the order of layers is specified. The example network here is composed of five layers:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;data layer (one for TRAINing and one for TESTing)&lt;/li&gt;
+&lt;li&gt;inner product layer (the weights I)&lt;/li&gt;
+&lt;li&gt;rectified linear units (the hidden layer)&lt;/li&gt;
+&lt;li&gt;inner product layer (the weights II)&lt;/li&gt;
+&lt;li&gt;output layer (Soft Max for classification)&lt;br&gt; A. soft max layer giving the loss&lt;br&gt; B. accuracy layer – so we can see how the network improves while training.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Caffe is an open-source deep learning framework originally created by Yangqing Jia which allows you to leverage your GPU for training neu
     
     </summary>
     
